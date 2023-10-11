@@ -50,3 +50,13 @@ public class Sample {
 	
 	
 }
+
+    public static String generateSecureRandomPassword() {
+        Stream<Character> pwdStream = Stream.concat(getRandomNumbers(2),
+                Stream.concat(getRandomSpecialChars(2),
+                        Stream.concat(getRandomAlphabets(2, true), getRandomAlphabets(4, false))));
+        List<Character> charList = pwdStream.collect(Collectors.toList());
+        Collections.shuffle(charList);
+        return charList.stream()
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
