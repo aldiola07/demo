@@ -1,24 +1,24 @@
-name: ScanCentral SAST Scan
+name: Fortify AST Scan
 
 on:
-push:
-  branches: [ master ]
-
-jobs:
-  ScanCentral-SAST-Scan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+  workflow_dispatch:
+  pull_request:
+    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
+steps:    
+      - name: Check out source code
+        uses: actions/checkout@v4  
+      - name: Run ScanCentral SAST Scan
+        uses: fortify/github-action@v1
         with:
-          java-version: 11
-      - uses: fortify/gha-setup-scancentral-client@v2
-        with:
-          client-auth-token: b8f28277-eca4-40dd-afa4-d0cf3c911288
-      - run: scancentral -url http://http://b8d00bd32ecb.sn.mynetname.net:8080/ssc start -bt mvn
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: scancentral-logs
-          path: ~/.fortify/scancentral/log
+          sast-scan: true
+        env:
+          SSC_URL: http://b8d00bd32ecb.sn.mynetname.net:8080/ssc
+          SSC_TOKEN: b8f28277-eca4-40dd-afa4-d0cf3c911288
+          SC_SAST_CLIENT_AUTH_TOKEN: b8f28277-eca4-40dd-afa4-d0cf3c911288
+          # EXTRA_SC_SAST_LOGIN_OPTS: --socket-timeout=60s
+          SSC_APPVERSION: 8ball:1
+          # EXTRA_PACKAGE_OPTS: -bf custom-pom.xml
+          # DO_WAIT: true
+          # DO_EXPORT: true
