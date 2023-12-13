@@ -1,7 +1,8 @@
  name: Fortify SSC 
  
- on:
-	workflow
+name: ScanCentral SAST Scan
+
+on: [workflow_dispatch]
  
  steps:    
       - name: Check out source code
