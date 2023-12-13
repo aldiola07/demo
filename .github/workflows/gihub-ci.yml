@@ -1,4 +1,4 @@
-name: ScanCentral SAST Scan 
+      name: ScanCentral SAST Scan 
 steps:    
       - name: Check out source code
         uses: actions/checkout@v4  
