@@ -13,8 +13,8 @@ jobs:
           java-version: 11
       - uses: fortify/gha-setup-scancentral-client@v2
         with:
-          client-auth-token: sampleToken
-      - run: scancentral -url http://microfocus.com/fortify start -bt mvn
+          client-auth-token: b8f28277-eca4-40dd-afa4-d0cf3c911288
+      - run: scancentral -url http://b8d00bd32ecb.sn.mynetname.net:8080/ssc start -bt none
       - uses: actions/upload-artifact@v2
         if: always()
         with:
