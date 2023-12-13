@@ -1,10 +1,4 @@
- name: Fortify SSC 
- 
-name: ScanCentral SAST Scan
-
-on: 
-  workflow_dispatch:
- 
+name: ScanCentral SAST Scan 
  steps:    
       - name: Check out source code
         uses: actions/checkout@v4  
