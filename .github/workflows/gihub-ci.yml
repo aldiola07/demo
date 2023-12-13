@@ -14,9 +14,8 @@ steps:
           SSC_APPVERSION: 8ball:1
           # EXTRA_PACKAGE_OPTS: -bf custom-pom.xml
           # DO_WAIT: true
-          # DO_EXPORT: true
-		  
-    steps:    
+          # DO_EXPORT: true		  
+steps:    
       - name: Export SSC vulnerability data to GitHub
         uses: fortify/github-action/ssc-export@v1
         env:
