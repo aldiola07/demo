@@ -2,7 +2,8 @@
  
 name: ScanCentral SAST Scan
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
  
  steps:    
       - name: Check out source code
